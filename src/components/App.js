@@ -193,13 +193,14 @@ const states = [
 // }
 
 function App() {
-  return <div id="main">
+  return(
+    <div id="main">
     <ul>
     {states.map((e)=>(
         <State index = {states.indexOf(e)} name = {e.name} cities = {e.cities} />
       ))}
     </ul>
-  </div>;
-}
+  </div>
+)}
 
 export default App;
