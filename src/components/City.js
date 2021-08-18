@@ -1,19 +1,21 @@
 import React, {useState} from 'react';
-import Town from './Town';
-function City({name,towns,index}){
-  const[click,setClick] = useState(false)
-  return(
+import Town from "./Town";
+
+function City({ name, towns, index }) {
+  const [clicked, setClicked] = React.useState(false);
+  return (
     <li>
-      <h3 id={"city"+(index+1)} onClick = {setClick(!click)}>{name}</h3>
-      { click ? (
+      <h4 id={"city" + (index + 1)} onClick={() => setClicked(!clicked)}>
+        {name}
+      </h4>
+      {clicked ? (
         <ul>
-          {towns.map((e)=>(
-            <Town name = {e.name} index = {towns.indexOf(e)} />
+          {towns.map((item) => (
+            <Town name={item.name} index={towns.indexOf(item)} />
           ))}
         </ul>
-      ) : null }
+      ) : null}
     </li>
-  )
+  );
 }
-
 export default City;
