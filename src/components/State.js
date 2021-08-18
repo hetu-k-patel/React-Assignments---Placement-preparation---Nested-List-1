@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import City from './City';
-const State = ({index,name,cities}) =>{
+import City from "./City";
+function State({index,name,cities}){
   const[click,setClick] = useState(false)
   return(
     <li>
