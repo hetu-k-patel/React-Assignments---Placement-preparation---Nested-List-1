@@ -1,7 +1,6 @@
 import React, { Component, useState } from "react";
 import "./../styles/App.css";
 
-// Do not alter the states const and values inside it.
 const states = [
   {
     name: "Madhya Pradesh",
@@ -154,8 +153,52 @@ const states = [
   },
 ];
 
+const State = ({index,name,cities}) =>{
+  const[click,setClick] = useState(false)
+  return(
+    <li>
+      <h3 id={"state"+(index+1)} onClick = {setClick(!click)}>{name}</h3>
+      { click ? (
+        <ul>
+          {cities.map((e)=>(
+            <City name = {e.name} towns = {e.towns} index = {cities.indexOf(e)} />
+          ))}
+        </ul>
+      ) : null }
+    </li>
+  )
+}
+
+const City = ({name,towns,index}) =>{
+  const[click,setClick] = useState(false)
+  return(
+    <li>
+      <h3 id={"city"+(index+1)} onClick = {setClick(!click)}>{name}</h3>
+      { click ? (
+        <ul>
+          {towns.map((e)=>(
+            <Town name = {e.name} index = {towns.indexOf(e)} />
+          ))}
+        </ul>
+      ) : null }
+    </li>
+  )
+}
+
+const Town = ({name,index}) =>{
+  return (
+    <li> <h5 id={"town" + (index+1)}>{name}</h5></li>
+  )
+}
+
 function App() {
-  return <div id="main"></div>;
+  return <div id="main">
+    <ul>
+    {states.map((e)=>(
+        <State index = {states.indexOf(e)} name = {e.name} cities = {e.cities} />
+      ))}
+    </ul>
+  </div>;
 }
 
 export default App;
