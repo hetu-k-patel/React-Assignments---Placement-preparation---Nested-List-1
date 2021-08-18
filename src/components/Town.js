@@ -5,3 +5,5 @@ const Town = ({name,index}) =>{
     <li> <h5 id={"town" + (index+1)}>{name}</h5></li>
   )
 }
+
+export default Town;
